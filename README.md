@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <p align="center">
   <img src="CaribeanOcean-ClientFrontend/src/assets/logo/logo.png" width="110" alt="Caribbean Ocean Resort & Spa Logo" />
 </p>
@@ -206,4 +205,3 @@ Domain has zero external dependencies. Interfaces live in Domain, implementation
 The frontend follows a **Feature-Based (Vertical Slice)** structure — each domain (booking, rooms, dashboard, etc.) owns its components, hooks, services and TypeScript interfaces in isolation.
 
 ---
->>>>>>> ac375c914d50c530f21e587bd8361203cf9b7d75
