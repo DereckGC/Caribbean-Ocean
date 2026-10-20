@@ -1,0 +1,762 @@
+/* Contenedor principal para centrar la tarjeta */
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-sand, #F5F0E8);
+}
+
+
+
+
+/* Tarjeta blanca (referencia del mockup) */
+
+
+/* Título Serif */
+.title {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  color: var(--color-ocean-deep, #0C3D52);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+
+/* Grid para agrupar Start y End date uno al lado del otro */
+.datesGrid {
+  display: flex;
+  gap: 3rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* Grupo genérico de input (Label + Input) */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  flex: 1; /* Permite que las fechas tomen el 50% cada una */
+  width: 100%;
+}
+
+.inputGroup.centered {
+  max-width: 50%; /* Hace que Room Type no sea tan ancho */
+}
+
+.inputGroup label {
+  font-family: var(--font-ui, 'Montserrat', sans-serif);
+  font-size: 1rem;
+  color: var(--color-ocean-deep, #0C3D52);
+  font-weight: 600;
+}
+
+/* Estilos de los inputs nativos */
+.inputGroup input,
+.inputGroup select {
+  padding: 0.75rem 1rem;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 1rem;
+  color: #333;
+  background-color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus {
+  outline: none;
+  border-color: var(--color-teal, #1D9E75);
+  box-shadow: 0 0 0 2px rgba(29, 158, 117, 0.2);
+}
+
+/* Botón negro del mockup */
+.reserveButton {
+  background-color: var(--color-night, #071E28);
+  color: white;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-ui, 'Montserrat', sans-serif);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  margin-top: 1rem;
+}
+
+.reserveButton:hover {
+  background-color: var(--color-ocean-deep, #0C3D52);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------
+   ESTILOS NUEVOS: Resultados de Búsqueda
+----------------------------------------- */
+.resultsContainer {
+  width: 100%;
+  max-width: 800px; /* Alineado con el ancho de la tarjeta de búsqueda */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.resultsHeader {
+  text-align: center;
+}
+.resultsTitle {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  color: var(--color-ocean-deep, #0C3D52);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.resultsSubtitle {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  color: #666;
+  font-size: 1.1rem;
+}
+/* Tarjeta individual de Cuarto */
+.roomCard {
+  background-color: var(--color-pearl, #FDFCFA);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  overflow: hidden;
+  transition: transform 0.2s;
+  align-items: stretch; /* Estirar hijos verticalmente */
+}
+.roomCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+.roomImagePlaceholder {
+  width: 250px;
+  background-color: #E0E0E0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-family: var(--font-body, 'Lato', sans-serif);
+}
+.roomImage {
+  width: 250px;
+  object-fit: cover;
+  background-color: #E0E0E0;
+}
+.roomContent {
+  flex: 1;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.roomHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.roomContent h3 {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  color: var(--color-ocean-deep, #0C3D52);
+  font-size: 1.5rem;
+  margin: 0;
+}
+.roomType {
+  font-family: var(--font-ui, 'Montserrat', sans-serif);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-teal, #1D9E75);
+  font-weight: 600;
+  margin-top: 0.2rem;
+  display: block;
+}
+.roomPrice {
+  font-family: var(--font-ui, 'Montserrat', sans-serif);
+  font-size: 1.25rem;
+  color: var(--color-ocean-deep, #0C3D52);
+  font-weight: 700;
+}
+.roomPrice span {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #666;
+}
+.roomDescription {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+.bookButton {
+  background-color: #E0E0E0;
+  color: var(--color-ocean-deep, #0C3D52);
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-ui, 'Montserrat', sans-serif);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background-color 0.2s, color 0.2s;
+}
+.bookButton:hover {
+  background-color: var(--color-teal, #1D9E75);
+  color: white;
+}
+
+/* --------------------------------------
+   ESTILOS NUEVOS: Formulario de Datos (Checkout)
+----------------------------------------- */
+
+.checkoutContainer {
+  background-color: var(--color-pearl, #FDFCFA);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra suave */
+  padding: 3rem 4rem;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.checkoutHeader {
+   display: flex;
+  justify-content: space-between; 
+  align-items: flex-end; 
+  width: 100%;
+  border-bottom: 1px solid #E0E0E0;
+  padding-bottom: 1.5rem;
+}
+.checkoutHeader h3 {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  color: var(--color-ocean-deep, #0C3D52);
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+/*  NUEVAS CLASES PARA EL BLOQUE DE PRECIO */
+.priceBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+
+.priceTotal {
+  font-family: var(--font-ui, 'Montserrat', sans-serif);
+  font-size: 1.5rem;
+  color: var(--color-ocean-deep, #0C3D52);
+  font-weight: 700;
+  margin: 0;
+}
+.priceDetails {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 0.35rem;
+  margin-bottom: 0;
+}
+.priceCalculating {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 1rem;
+  color: #888;
+  font-style: italic;
+  margin: 0;
+}
+
+/* --- Botón de Detalles de Precio --- */
+.priceDetailsButton {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 0.5rem;
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.85rem;
+  color: var(--color-teal, #1D9E75);
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.priceDetailsButton:hover {
+  color: var(--color-ocean-deep, #0C3D52);
+}
+
+
+/* --- Caja del Desglose de Precio (Recibo) --- */
+.priceDetailsBox {
+  width: 100%;
+  background-color: #F9F7F3; /* Un cremita/arena muy suave */
+  border: 1px solid #E5E0D8;
+  border-radius: 8px;
+  padding: 1.5rem;
+  /* Animación suave para cuando el usuario hace clic en el botón */
+  animation: slideDownFade 0.3s ease-out; 
+}
+.priceDetailsBox h4 {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  color: var(--color-ocean-deep, #0C3D52);
+  font-size: 1.4rem;
+  margin: 0 0 1rem 0;
+  border-bottom: 1px dashed #D8D3C8; /* Línea punteada elegante */
+  padding-bottom: 0.5rem;
+}
+/* --- Fila Individual por cada Noche --- */
+.priceDetailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+.priceDetailRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+/* Fecha (Izquierda Arriba) */
+.priceDetailRow strong {
+  font-family: var(--font-ui, 'Montserrat', sans-serif);
+  font-size: 0.95rem;
+  color: var(--color-ocean-deep, #0C3D52);
+  display: block;
+}
+/* Explicación de Oferta/Temporada (Izquierda Abajo) */
+.priceDetailRow p {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0.25rem 0 0 0;
+}
+/* Precio Final de esa noche (Derecha) */
+.priceDetailRow span {
+  font-family: var(--font-ui, 'Montserrat', sans-serif);
+  font-weight: 700;
+  color: var(--color-teal, #1D9E75);
+  font-size: 1.05rem;
+}
+
+.checkoutImagePlaceholder {
+  width: 100%;
+  height: 250px;
+  background-color: #E0E0E0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.checkoutImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Grid para el formulario final (2 columnas) */
+.checkoutFormGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+.checkoutActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+.cancelButton {
+  background-color: transparent;
+  color: var(--color-night, #071E28);
+  border: 1px solid var(--color-night, #071E28);
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-family: var(--font-ui, 'Montserrat', sans-serif);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.cancelButton:hover {
+  background-color: #E0E0E0;
+}
+.acceptButton {
+  background-color: var(--color-night, #071E28);
+  color: white;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-ui, 'Montserrat', sans-serif);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.acceptButton:hover {
+  background-color: var(--color-ocean-deep, #0C3D52);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------
+   ESTILOS NUEVOS: Vista de Éxito
+----------------------------------------- */
+.successContainer {
+  background-color: var(--color-pearl, #FDFCFA);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra suave */
+  padding: 4rem;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.closeSuccessBtn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.closeSuccessBtn:hover {
+  color: var(--color-coral, #D85A30);
+}
+
+.successIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--color-ocean-deep, #0C3D52);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ocean-deep, #0C3D52);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.successTitle {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  color: var(--color-ocean-deep, #0C3D52);
+  font-size: 2.2rem;
+  margin: 0;
+}
+
+.successMessage {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.reserveCode {
+  font-family: var(--font-ui, 'Montserrat', sans-serif);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--color-teal, #1D9E75);
+  margin-bottom: 0.5rem;
+}
+
+.successFooter {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  font-size: 1.5rem;
+  color: var(--color-ocean-deep, #0C3D52);
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+
+
+/* --------------------------------------
+   NUEVO: Sección del Search Hero
+----------------------------------------- */
+/* Esta es la barra superior o Hero Banner con imagen */
+.searchHero {
+  position: relative;
+  width: 100%;
+  padding: 6rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Fondo simulado por ahora (cambiar URL luego) */
+  background-image: url('https://images.unsplash.com/photo-1540541338287-41700207dee6'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* Pequeño overlay oscuro sobre la imagen para resaltar la tarjeta blanca */
+.searchHero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Sombra transparente, como en diseño moderno */
+  z-index: 1;
+}
+/* Modificamos '.card' para que quede sobre el overlay */
+.card {
+  position: relative;
+  z-index: 2; /* Para que quede encima de la sombra de la imagen */
+  background-color: var(--color-pearl, #FDFCFA);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Más sombra porque tiene un back oscuro */
+  padding: 3rem 4rem;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* --------------------------------------
+   ESTILOS DE RESULTADOS (Refactorizado)
+----------------------------------------- */
+/* Nuevo contenedor para separar los resultados del hero */
+.resultsSection {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 2rem;
+  width: 100%;
+  /* Aquí usamos el background sand (por defecto lo tiene el pageContainer, pero lo aseguramos) */
+}
+/* Esto lo dejas intacto a como estaba antes */
+.resultsContainer {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+/* Contenedor original refactorizado SOLO para Checkout / Success */
+.bookingWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem;
+  background-color: var(--color-sand, #F5F0E8);
+  min-height: 100vh;
+}
+
+
+
+/* --------------------------------------
+   ESTILOS NUEVOS: Hero para Checkout y Success
+----------------------------------------- */
+.checkoutHero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Puedes buscar otra imagen que te guste más, o usamos la misma: */
+  background-image: url('https://images.unsplash.com/photo-1540541338287-41700207dee6'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Opcional: Da un efecto visual muy lindo al hacer scroll */
+}
+
+/* --------------------------------------
+   ESTILOS DE ERROR GLOBAL (Refinado)
+----------------------------------------- */
+.errorMessageContainer {
+  width: 100%;
+  /* Un rojo hiper suave (10% de opacidad) que no asusta */
+  background-color: rgba(239, 68, 68, 0.08); 
+  /* Diseño moderno: Solo borde a la izquierda, sin cajita de bordes pesada */
+  border-left: 4px solid #ef4444; 
+  color: #991b1b;
+  padding: 1rem 1.5rem;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-weight: 400;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.05);
+  
+  /* Animación suave al aparecer */
+  animation: slideDownFade 0.3s ease-out;
+}
+.errorIcon {
+  font-size: 1.25rem;
+  /* Subimos el ícono un poquito para que alinee perfecto con el texto de múltiples líneas */
+  margin-top: -2px; 
+}
+/* Micro-interacción: Que baje y aparezca suavemente */
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* --------------------------------------
+   ESTILOS RESPONSIVOS (Mobile & Tablet)
+----------------------------------------- */
+@media (max-width: 768px) {
+  /* Títulos adaptables */
+  .title, 
+  .checkoutHeader h3, 
+  .successTitle {
+    font-size: 1.8rem;
+  }
+
+  /* 1. Formulario de Búsqueda (Hero & Card) */
+  .searchHero {
+    padding: 3rem 1rem;
+  }
+  
+  .card {
+    padding: 2rem 1.5rem;
+  }
+
+  .datesGrid {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .inputGroup.centered {
+    max-width: 100%;
+  }
+
+  /* 2. Resultados de Búsqueda (Tarjetas de cuartos) */
+  .resultsSection {
+    padding: 2rem 1rem;
+  }
+
+  .roomCard {
+    flex-direction: column; /* Apila la imagen y el texto verticalmente */
+  }
+
+  .roomImagePlaceholder, 
+  .roomImage {
+    width: 100%;
+    height: 220px;
+  }
+
+  .roomContent {
+    padding: 1.25rem;
+  }
+
+  .roomHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .roomPrice {
+    align-self: flex-start;
+  }
+
+  .bookButton {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* 3. Formulario de Checkout (Datos de usuario) */
+  .checkoutHero, 
+  .bookingWrapper {
+    padding: 2rem 1rem;
+  }
+
+  .checkoutContainer {
+    padding: 2rem 1.5rem;
+  }
+
+  .checkoutFormGrid {
+    grid-template-columns: 1fr; /* Pasa de 2 columnas a 1 columna */
+    gap: 1.25rem;
+  }
+
+  .checkoutActions {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .cancelButton, 
+  .acceptButton {
+    width: 100%;
+  }
+
+  /* 4. Vista de Éxito */
+  .successContainer {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .successIcon {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+}
+
+/* --- Banner de Oferta Activa (Search Form) --- */
+.offerBadgeContainer {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(29, 158, 117, 0.1) 0%, rgba(12, 61, 82, 0.05) 100%);
+  border: 1px solid rgba(29, 158, 117, 0.2);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: -1rem; /* Para acercarlo al título */
+  margin-bottom: 0.5rem;
+  animation: slideDownFade 0.3s ease-out;
+}
+
+.offerBadgeIcon {
+  font-size: 1.5rem;
+}
+
+.offerBadgeText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.offerBadgeText strong {
+  font-family: var(--font-ui, 'Montserrat', sans-serif);
+  color: var(--color-teal, #1D9E75);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.offerBadgeText p {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  color: var(--color-ocean-deep, #0C3D52);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+
+

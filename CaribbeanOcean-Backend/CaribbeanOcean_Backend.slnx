@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="CaribbeanOcean.API/CaribbeanOcean.API.csproj" />
+  <Project Path="CaribbeanOcean.Application/CaribbeanOcean.Application.csproj" />
+  <Project Path="CaribbeanOcean.Domain/CaribbeanOcean.Domain.csproj" />
+  <Project Path="CaribbeanOcean.Infraestructure/CaribbeanOcean.Infraestructure.csproj" />
+</Solution>

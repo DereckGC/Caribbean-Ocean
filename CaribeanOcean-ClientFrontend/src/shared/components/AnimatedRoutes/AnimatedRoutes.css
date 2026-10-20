@@ -1,0 +1,15 @@
+.animated-route {
+  animation: page-entrance 3s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, transform;
+}
+
+@keyframes page-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

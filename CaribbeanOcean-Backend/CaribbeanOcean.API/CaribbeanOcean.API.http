@@ -1,0 +1,256 @@
+@CaribbeanOcean.API_HostAddress = http://localhost:5287
+
+GET {{CaribbeanOcean.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+// ==========================================
+// Reservation Endpoints
+// ==========================================
+
+### Get All Reservations
+GET {{CaribbeanOcean.API_HostAddress}}/api/Reservation/
+Accept: application/json
+
+###
+
+### Get Reservation by ID
+GET {{CaribbeanOcean.API_HostAddress}}/api/Reservation/17
+Accept: application/json
+
+###
+
+### Create a new Reservation
+POST {{CaribbeanOcean.API_HostAddress}}/api/Reservation/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "roomTypeId": 1,
+  "clientName": "John",
+  "clientLastname": "Doe",
+  "email": "testApi.castro@example.com",
+  "cardNumber": "1234-5678-9012-3456",
+  "checkIn": "2026-03-17T15:00:00Z",
+  "checkOut": "2026-03-20T11:00:00Z",
+  "applyOffers": false,
+  "selectedOfferId": null
+}
+
+### Update an existing Reservation
+PUT {{CaribbeanOcean.API_HostAddress}}/api/Reservation/6
+Content-Type: application/json
+Accept: application/json
+{
+  "id": 6,
+  "roomId": 1,
+  "roomTypeId": 1,
+  "clientName": "John",
+  "clientLastname": "Doe2",
+  "email": "testApi.castro@example.com",
+  "checkIn": "2026-05-05T15:00:00Z",
+  "checkOut": "2026-05-09T11:00:00Z"
+}
+
+### Update
+PUT {{CaribbeanOcean.API_HostAddress}}/api/Locations
+Content-Type: application/json
+Accept: application/json
+{
+  "Title": "ARRIVES AT CARIBBEAN OCEAN",
+  "Subtitle": "🗺️",
+  "Description": "Embark on a seamless journy to paradise. Whether you are traveling by land or air, arriving at our sanctuary is designed to be effortless and secure",
+  "Images": [  {"id": 0, "url": "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2432.711665574332!2d-82.76034244392518!3d9.65384100316555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2scr!4v1780338830817!5m2!1ses-419!2scr", "alt": "", "publicId": "" }  ],
+  "UpdateBy": 2
+}
+
+### Delete Reservation
+DELETE {{CaribbeanOcean.API_HostAddress}}/api/Reservation/27
+Accept: application/json
+
+###
+
+### Get Reservation Night Details
+GET {{CaribbeanOcean.API_HostAddress}}/api/Reservation/27/night-details
+Accept: application/json
+
+
+###
+// ==========================================
+// RoomType Endpoints
+// ==========================================
+
+### Create a new RoomType
+POST {{CaribbeanOcean.API_HostAddress}}/api/RoomType/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Standard Suite",
+  "description": "A comfortable standard suite with ocean view.",
+  "dailyRate": 150.00,
+  "imageUrl": "https://example.com/room.jpg"
+}
+
+###
+
+### Get all available RoomTypes
+GET {{CaribbeanOcean.API_HostAddress}}/api/RoomType/Available
+Content-Type: application/json
+Accept: application/json
+
+{
+  "checkIn": "2026-06-01T15:00:00Z",
+  "checkOut": "2026-06-05T11:00:00Z"
+}
+
+###
+
+### Get available RoomType by ID
+GET {{CaribbeanOcean.API_HostAddress}}/api/RoomType/Available/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "checkIn": "2026-02-12T15:00:00Z",
+  "checkOut": "2026-10-10T11:00:00Z",
+  "roomTypeId": 1
+}
+
+###
+### Get all available RoomTypes Count
+GET {{CaribbeanOcean.API_HostAddress}}/api/RoomType/AvailableCount
+Content-Type: application/json
+Accept: application/json
+
+{
+  "checkIn": "2026-06-01T15:00:00Z",
+  "checkOut": "2026-06-05T11:00:00Z"
+}
+
+
+### Get About Us
+GET {{CaribbeanOcean.API_HostAddress}}/api/AboutUs/
+
+###
+
+### Check if a Room is Available
+POST {{CaribbeanOcean.API_HostAddress}}/api/Reservation/HasAvailableRoom
+Content-Type: application/json
+Accept: application/json
+
+{
+  "roomTypeId": 1,
+  "checkIn": "2026-06-01T15:00:00Z",
+  "checkOut": "2026-06-05T11:00:00Z"
+}
+
+###
+
+### Preview Reservation Price
+POST {{CaribbeanOcean.API_HostAddress}}/api/Reservation/price-preview
+Content-Type: application/json
+Accept: application/json
+
+{
+  "roomTypeId": 1,
+  "checkIn": "2026-08-30T15:00:00Z",
+  "checkOut": "2026-09-03T11:00:00Z",
+  "applyOffers": false,
+  "selectedOfferId": 1
+}
+
+###
+
+
+### Get Admin Offers
+GET {{CaribbeanOcean.API_HostAddress}}/api/Offer/admin/offers
+
+###
+
+// ==========================================
+// Facility Endpoints
+// ==========================================
+
+### Get Facility Page
+GET {{CaribbeanOcean.API_HostAddress}}/api/Facility
+Accept: application/json
+
+###
+
+### Get All Facilities
+GET {{CaribbeanOcean.API_HostAddress}}/api/Facility/all
+Accept: application/json
+
+###
+
+### Get Facility by ID
+GET {{CaribbeanOcean.API_HostAddress}}/api/Facility/1
+Accept: application/json
+
+###
+
+### Create a new Facility
+POST {{CaribbeanOcean.API_HostAddress}}/api/Facility
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Spa & Wellness",
+  "description": "Relaxing spa with massage and wellness treatments.",
+  "features": [
+    "Massage",
+    "Sauna"
+  ],
+  "imageUrl": "https://example.com/spa.jpg",
+  "updatedBy": 1,
+  "displayOrder": 1
+}
+
+###
+
+### Update an existing Facility
+PUT {{CaribbeanOcean.API_HostAddress}}/api/Facility/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 1,
+  "name": "Spa & Wellness Center",
+  "description": "Updated luxurious spa with massage and wellness treatments.",
+  "features": [
+    "Massage",
+    "Sauna",
+    "Hot Tub"
+  ],
+  "imageUrl": "https://example.com/spa_updated.jpg",
+  "updated_by": 1,
+  "displayOrder": 1
+}
+
+###
+
+### Delete Facility
+DELETE {{CaribbeanOcean.API_HostAddress}}/api/Facility/1?updatedBy=1
+Accept: application/json
+
+### POST AdminUser
+POST {{CaribbeanOcean.API_HostAddress}}/api/auth/register
+Content-Type: application/json
+Accept: application/json
+{
+  "Username": "admin",
+  "Password": "password",
+  "Name": "Admin User",
+  "Email": "admin@example.com"
+}
+
+### POST Login
+POST {{CaribbeanOcean.API_HostAddress}}/api/auth/login
+Content-Type: application/json
+Accept: application/json
+{
+  "Username": "admin",
+  "Password": "password"
+}
